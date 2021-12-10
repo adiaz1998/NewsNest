@@ -23,7 +23,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func retrieveArticles(){
-        let urlRequest = URLRequest(url: URL(string: "https://newsapi.org/v2/top-headlines?country=us&category=health&apiKey=21934fcafea34b6893d04a181838da92")!)
+        let urlRequest = URLRequest(url: URL(string: "https://newsapi.org/v2/top-headlines?country=us&category=general&apiKey=21934fcafea34b6893d04a181838da92")!)
         
         let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
             
@@ -49,9 +49,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                             article.url = url
                             article.imageUrl = urlToImage
                             
+                            self.articles?.append(article)
+
                         }
                         
-                        self.articles?.append(article)
+                        //self.articles?.append(article)
                         
                     }
                             
