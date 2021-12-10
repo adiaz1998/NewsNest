@@ -28,12 +28,12 @@
                                             <navigationItem title="General" id="8rC-TL-4YL"/>
                                         </items>
                                     </navigationBar>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="Mgg-Oi-PbD">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="250" estimatedRowHeight="200" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="Mgg-Oi-PbD">
                                         <rect key="frame" x="0.0" y="44" width="390" height="722"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="articleCell" rowHeight="225" translatesAutoresizingMaskIntoConstraints="NO" id="tRQ-gz-Cac" userLabel="articleCell" customClass="NewsArticleCell" customModule="NewsNest" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="articleCell" rowHeight="225" id="tRQ-gz-Cac" userLabel="articleCell" customClass="NewsArticleCell" customModule="NewsNest" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="225"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tRQ-gz-Cac" id="rv0-Z0-qII">
@@ -60,7 +60,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YyR-cu-cqA">
-                                                            <rect key="frame" x="154" y="187" width="208" height="14.333333333333343"/>
+                                                            <rect key="frame" x="154" y="187" width="38" height="14.333333333333343"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -69,12 +69,14 @@
                                                     <constraints>
                                                         <constraint firstItem="u6X-n1-GG9" firstAttribute="top" secondItem="GLx-ec-eto" secondAttribute="bottom" constant="8" id="7I4-R1-K5E"/>
                                                         <constraint firstAttribute="trailingMargin" secondItem="YyR-cu-cqA" secondAttribute="trailing" constant="8" id="8TR-JC-saT"/>
-                                                        <constraint firstItem="YyR-cu-cqA" firstAttribute="leading" secondItem="Jse-9l-maA" secondAttribute="trailing" constant="8" id="Ce4-9R-j7i"/>
                                                         <constraint firstAttribute="trailing" secondItem="u6X-n1-GG9" secondAttribute="trailing" constant="8" id="HZH-pG-Iy7"/>
                                                         <constraint firstAttribute="trailing" secondItem="GLx-ec-eto" secondAttribute="trailing" constant="8" id="IGY-Xg-PKZ"/>
                                                         <constraint firstItem="GLx-ec-eto" firstAttribute="leading" secondItem="Jse-9l-maA" secondAttribute="trailing" constant="8" id="K3G-UX-Hng"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="YyR-cu-cqA" secondAttribute="trailing" constant="178" id="Rwa-x7-1Q7"/>
+                                                        <constraint firstItem="YyR-cu-cqA" firstAttribute="top" secondItem="u6X-n1-GG9" secondAttribute="bottom" constant="57" id="Tva-TV-6T3"/>
                                                         <constraint firstItem="Jse-9l-maA" firstAttribute="leading" secondItem="rv0-Z0-qII" secondAttribute="leading" id="UtM-HY-O7s"/>
                                                         <constraint firstItem="u6X-n1-GG9" firstAttribute="leading" secondItem="Jse-9l-maA" secondAttribute="trailing" constant="8" id="cwx-GK-HyB"/>
+                                                        <constraint firstItem="YyR-cu-cqA" firstAttribute="leading" secondItem="Jse-9l-maA" secondAttribute="trailing" constant="8" id="wLZ-DW-Mlo"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>

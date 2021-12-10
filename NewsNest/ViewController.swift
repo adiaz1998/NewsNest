@@ -23,7 +23,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func retrieveArticles(){
-        let urlRequest = URLRequest(url: URL(string: "https://newsapi.org/v2/top-headlines?country=us&category=general&apiKey=21934fcafea34b6893d04a181838da92")!)
+        let urlRequest = URLRequest(url: URL(string: "https://newsapi.org/v2/top-headlines?country=us&category=health&apiKey=21934fcafea34b6893d04a181838da92")!)
         
         let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
             
@@ -37,13 +37,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             do{
                 // Converts JSON into dictionary format
                 let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String: AnyObject]
-                
+                    
                 if let articlesDict = json["articles"] as? [[String : AnyObject]] {
-                        
                     for articlesDict in articlesDict {
                         let article = NewsArticle()
                         if let title = articlesDict["title"] as? String, let author = articlesDict["author"] as? String, let desc = articlesDict["description"] as? String, let url = articlesDict["url"] as? String, let urlToImage = articlesDict["urlToImage"] as? String {
-                            
+                                                            
                             article.author = author
                             article.desc = desc
                             article.headline = title
@@ -80,10 +79,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "articleCell", for: indexPath) as! NewsArticleCell
         
+        
         cell.title.text = self.articles?[indexPath.item].headline
         cell.desc.text = self.articles?[indexPath.item].desc
         cell.author.text = self.articles?[indexPath.item].author
-         
+        if self.articles?[indexPath.item].imageUrl != nil{
+            cell.imgView.downloadImg(from: (self.articles?[indexPath.item].imageUrl!)!)
+        }
         return cell
     }
     
@@ -95,3 +97,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
 }
 
+extension UIImageView {
+    
+    func downloadImg(from url: String){
+       
+        let urlRequest = URLRequest(url: URL(string: url)!)
+        
+        let task = URLSession.shared.dataTask(with: urlRequest) {
+            (data, response, error) in
+            if error != nil{
+                print(error)
+                return
+            }
+            
+            DispatchQueue.main.async {
+                self.image = UIImage(data: data!)
+            }
+        }
+        task.resume()
+    }
+    
+}
