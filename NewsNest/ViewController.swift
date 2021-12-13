@@ -8,22 +8,26 @@
 import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
     
     @IBOutlet weak var table: UITableView!
     
+    @IBOutlet weak var MenuButton: UIBarButtonItem!
+    
+    
     //Intialize array containing all of the articles
     var articles: [NewsArticle]? = []
-
+    var category = "general"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         table.dataSource = self
         
-        retrieveArticles()
+        retrieveArticles(fromSource: category)
+        
     }
     
-    func retrieveArticles(){
-        let urlRequest = URLRequest(url: URL(string: "https://newsapi.org/v2/top-headlines?country=us&category=general&apiKey=21934fcafea34b6893d04a181838da92")!)
+    func retrieveArticles(fromSource category: String){
+        let urlRequest = URLRequest(url: URL(string: "https://newsapi.org/v2/top-headlines?country=us&category=\(category)&apiKey=21934fcafea34b6893d04a181838da92")!)
         
         let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
             
@@ -53,7 +57,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
                         }
                         
-                        //self.articles?.append(article)
                         
                     }
                             
@@ -95,6 +98,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ table: UITableView, numberOfRowsInSection section: Int) -> Int {
         // If the length of the articles array is null, then return 0
         return self.articles?.count ?? 0
+    }
+    
+    let menuSelection = MenuSelection()
+    @IBAction func pressMenu(_ sender: Any) {
+        menuSelection.displayMenu()
+        menuSelection.mainVC = self
+    }
+    
+    func handleMenuButton(){
+        //Display Menu
+        let blackView = UIView()
+        blackView.backgroundColor = UIColor.black
+        self.view.addSubview(blackView)
+        blackView.frame = self.view.frame
     }
 
 }
